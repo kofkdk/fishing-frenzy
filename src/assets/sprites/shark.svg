@@ -1,13 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 20" width="64" height="40">
-<path d="M2,10 Q2,4 8,3 L24,3 Q30,4 31,8 L32,10 L31,12 Q30,16 24,17 L8,17 Q2,16 2,10 Z" fill="#78909C"/>
-<path d="M4,12 L28,12 Q28,16 24,17 L8,17 Q4,16 4,12 Z" fill="#ECEFF1" opacity="0.5"/>
-<path d="M28,4 L32,1 L32,7 Z" fill="#455A64"/>
-<path d="M28,13 L32,19 L32,13 Z" fill="#455A64"/>
-<path d="M10,3 L14,0 L18,3 Z" fill="#455A64"/>
-<path d="M10,14 L8,18 L14,14 Z" fill="#455A64" opacity="0.8"/>
-<circle cx="7" cy="8" r="2.5" fill="white"/>
-<circle cx="7.5" cy="8" r="1.5" fill="#1a1a2e"/>
-<circle cx="7" cy="7.5" r="0.7" fill="white" opacity="0.8"/>
-<path d="M3,10 L4,11 L5,10 L6,11" fill="none" stroke="white" stroke-width="0.8"/>
-<line x1="3" y1="10" x2="5" y2="10" stroke="#455A64" stroke-width="0.5" opacity="0.6"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 20" width="64" height="40" shape-rendering="crispEdges">
+<path d="M2,11 Q2,7 6,6 L24,6 Q28,7 30,10 L31,11 Q28,14 24,14 L6,15 Q2,14 2,11 Z" fill="#78909C"/>
+<path d="M4,12 L26,13 Q28,12 28,11 L4,11 Z" fill="#ECEFF1" opacity="0.6"/>
+<path d="M28,6 L32,3 L32,8 Z" fill="#455A64"/>
+<path d="M28,14 L32,17 L32,12 Z" fill="#455A64"/>
+<path d="M12,6 L15,0 L18,6 Z" fill="#455A64"/>
+<path d="M10,15 L12,18 L14,15 Z" fill="#455A64" opacity="0.7"/>
+<path d="M2,10 L4,9.5 L4,10.5 Z" fill="#455A64"/>
+<rect x="3" y="10.5" width="1" height="0.7" fill="white"/>
+<rect x="4.5" y="10.5" width="1" height="0.7" fill="white"/>
+<rect x="6" y="10.5" width="1" height="0.7" fill="white"/>
+<circle cx="5" cy="8" r="1.5" fill="white"/>
+<circle cx="5.3" cy="8" r="0.9" fill="#1a1a2e"/>
 </svg>

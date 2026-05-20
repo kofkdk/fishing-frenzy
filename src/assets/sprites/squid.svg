@@ -1,14 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 20" width="64" height="40">
-<ellipse cx="16" cy="10" rx="13" ry="8" fill="#CE93D8" opacity="0.25"><animate attributeName="opacity" values="0.15;0.35;0.15" dur="2s" repeatCount="indefinite"/></ellipse>
-<path d="M8,4 Q14,2 20,4 L22,10 L20,16 Q14,18 8,16 L6,10 Z" fill="#AB47BC"/>
-<ellipse cx="14" cy="10" rx="6" ry="5" fill="#F3E5F5" opacity="0.4"/>
-<path d="M22,6 Q26,7 30,5 Q32,6 30,7" fill="none" stroke="#6A1B9A" stroke-width="1.5"/>
-<path d="M22,9 Q26,10 30,8 Q32,9 30,10" fill="none" stroke="#6A1B9A" stroke-width="1.5"/>
-<path d="M22,12 Q26,13 30,11 Q32,12 30,13" fill="none" stroke="#6A1B9A" stroke-width="1.5"/>
-<path d="M22,15 Q26,16 30,14 Q32,15 30,16" fill="none" stroke="#6A1B9A" stroke-width="1.5"/>
-<path d="M8,5 L4,3 L6,7 Z" fill="#6A1B9A"/>
-<path d="M8,15 L4,17 L6,13 Z" fill="#6A1B9A"/>
-<circle cx="11" cy="9" r="2.5" fill="white"/>
-<circle cx="11.5" cy="9" r="1.5" fill="#1a1a2e"/>
-<circle cx="11" cy="8.5" r="0.7" fill="white" opacity="0.8"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 20" width="64" height="40" shape-rendering="crispEdges">
+<ellipse cx="12" cy="10" rx="7" ry="6" fill="#AB47BC"/>
+<ellipse cx="12" cy="11" rx="4" ry="3" fill="#E1BEE7" opacity="0.4"/>
+<path d="M5,6 L3,4 L6,7 Z" fill="#7B1FA2"/>
+<path d="M5,14 L3,16 L6,13 Z" fill="#7B1FA2"/>
+<path d="M19,7 Q22,6 25,7 Q27,8 29,7" fill="none" stroke="#7B1FA2" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M19,9 Q23,8 26,9 Q28,10 31,9" fill="none" stroke="#7B1FA2" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M19,11 Q23,12 26,11 Q28,10 31,11" fill="none" stroke="#7B1FA2" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M19,13 Q22,14 25,13 Q27,12 29,13" fill="none" stroke="#7B1FA2" stroke-width="1.5" stroke-linecap="round"/>
+<circle cx="10" cy="8" r="2.5" fill="white"/>
+<circle cx="10.5" cy="8" r="1.5" fill="#1a1a2e"/>
+<circle cx="10" cy="7.5" r="0.6" fill="white"/>
+<ellipse cx="12" cy="10" rx="7" ry="6" fill="#CE93D8" opacity="0.15">
+<animate attributeName="opacity" values="0.1;0.25;0.1" dur="2s" repeatCount="indefinite"/>
+</ellipse>
 </svg>

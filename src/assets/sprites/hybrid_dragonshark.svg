@@ -1,15 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 20" width="64" height="40">
-<ellipse cx="16" cy="10" rx="13" ry="8" fill="#FF5722" opacity="0.25"><animate attributeName="opacity" values="0.15;0.35;0.15" dur="2s" repeatCount="indefinite"/></ellipse>
-<path d="M2,10 Q2,4 8,3 L24,3 Q30,4 31,8 L32,10 L31,12 Q30,16 24,17 L8,17 Q2,16 2,10 Z" fill="#E64A19"/>
-<path d="M4,12 L28,12 Q28,16 24,17 L8,17 Q4,16 4,12 Z" fill="#FFCCBC" opacity="0.5"/>
-<path d="M28,4 L32,1 L32,7 Z" fill="#BF360C"/>
-<path d="M28,13 L32,19 L32,13 Z" fill="#BF360C"/>
-<path d="M10,3 L14,0 L18,3 Z" fill="#BF360C"/>
-<path d="M10,14 L8,18 L14,14 Z" fill="#BF360C" opacity="0.8"/>
-<circle cx="7" cy="8" r="2.5" fill="white"/>
-<circle cx="7.5" cy="8" r="1.5" fill="#FFD700"/>
-<circle cx="7" cy="7.5" r="0.7" fill="white" opacity="0.8"/>
-<path d="M3,10 L4,11 L5,10 L6,11" fill="none" stroke="white" stroke-width="0.8"/>
-<path d="M4,8 L1,5 L2,4" fill="none" stroke="#FF5722" stroke-width="1.5" stroke-linecap="round"/>
-<line x1="3" y1="10" x2="5" y2="10" stroke="#BF360C" stroke-width="0.5" opacity="0.6"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 20" width="64" height="40" shape-rendering="crispEdges">
+<ellipse cx="16" cy="10" rx="14" ry="9" fill="#FF5722" opacity="0.2">
+<animate attributeName="opacity" values="0.1;0.3;0.1" dur="1.5s" repeatCount="indefinite"/>
+</ellipse>
+<path d="M2,11 Q2,5 7,4 L24,4 Q29,5 30,10 L31,11 Q28,15 24,15 L7,16 Q2,15 2,11 Z" fill="#E64A19"/>
+<path d="M4,12 L26,13 Q28,12 28,11 L4,11 Z" fill="#FFCCBC" opacity="0.5"/>
+<path d="M28,5 L32,2 L32,7 Z" fill="#BF360C"/>
+<path d="M28,15 L32,18 L32,12 Z" fill="#BF360C"/>
+<path d="M10,4 L12,0 L15,4 Z" fill="#BF360C"/>
+<path d="M16,4 L18,1 L20,4 Z" fill="#FFD700"/>
+<line x1="3" y1="8" x2="1" y2="5" stroke="#FFD700" stroke-width="1.5" stroke-linecap="round"/>
+<rect x="3" y="11" width="1" height="0.8" fill="white"/>
+<rect x="5" y="11" width="1" height="0.8" fill="white"/>
+<rect x="7" y="11" width="1" height="0.8" fill="white"/>
+<circle cx="5" cy="8" r="2" fill="white"/>
+<circle cx="5.5" cy="8" r="1.2" fill="#FFD700"/>
 </svg>
