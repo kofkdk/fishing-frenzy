@@ -12,8 +12,9 @@ const BG_FISH = [
 ];
 
 export function renderScene() {
-  const container = document.getElementById('fishBg');
-  if (!container) return;
+  const fishBg = document.getElementById('fishBg');
+  const fisherContainer = document.getElementById('fisherContainer');
+  if (!fishBg) return;
 
   const fisherBoat = getFisherBoatSprite();
   const phase = fishingMinigame.phase;
@@ -29,33 +30,35 @@ export function renderScene() {
   const bobberClass = phase === 'bite' ? 'bobber-bite' : (phase === 'reeling' ? 'bobber-reel' : '');
   const bobber = getBobberSprite();
 
-  let html = `
-    <div class="${fisherClass}">
-      <img src="${fisherBoat}" alt="Fisher">
-    </div>
-  `;
-
-  if (showBobber) {
-    html += `
-      <div class="scene-bobber ${bobberClass}">
-        <img src="${bobber}" alt="Bobber" style="width:16px;height:16px;image-rendering:pixelated;">
+  // Fisher + bobber + line → render to fisherContainer (outside water div)
+  if (fisherContainer) {
+    let fisherHtml = `
+      <div class="${fisherClass}">
+        <img src="${fisherBoat}" alt="Fisher">
       </div>
     `;
+
+    if (showBobber) {
+      fisherHtml += `
+        <div class="scene-bobber ${bobberClass}">
+          <img src="${bobber}" alt="Bobber">
+        </div>
+        <div class="fishing-line"></div>
+      `;
+    }
+
+    fisherContainer.innerHTML = fisherHtml;
   }
 
-  // Fishing line from rod tip to bobber
-  if (showBobber) {
-    html += `<div class="fishing-line"></div>`;
-  }
-
-  // Background fish
+  // Background fish → render to fishBg (inside water div)
+  let fishHtml = '';
   BG_FISH.forEach((f, i) => {
     const sprite = getFishSprite(f.id);
     const goingRight = f.dir === 'right';
     const animName = goingRight ? 'swim-right' : 'swim-left';
     const flipStyle = goingRight ? 'transform:scaleX(-1);' : '';
     
-    html += `
+    fishHtml += `
       <div class="fish-bg" style="
         position: absolute;
         top: ${f.top}%;
@@ -65,7 +68,7 @@ export function renderScene() {
       "><img src="${sprite}" alt="${f.id}" style="width:48px;height:24px;image-rendering:pixelated;${flipStyle}"></div>
     `;
   });
-  container.innerHTML = html;
+  fishBg.innerHTML = fishHtml;
 
   // Add keyframes if not already added
   if (!document.getElementById('swim-keyframes')) {
@@ -81,7 +84,6 @@ export function renderScene() {
         to { left: calc(100% + 60px); }
       }
       .fish-bg { position: absolute; }
-      .scene-fisher img { image-rendering: pixelated; image-rendering: -moz-crisp-edges; }
     `;
     document.head.appendChild(style);
   }

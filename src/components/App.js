@@ -17,6 +17,7 @@ export function renderApp() {
           <div class="wave"></div>
           <div id="fishBg"></div>
         </div>
+        <div id="fisherContainer"></div>
 
         <canvas id="particles"></canvas>
       </div>
