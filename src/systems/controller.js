@@ -7,6 +7,7 @@ import { renderHeader } from '../components/Header.js';
 import { renderUI } from '../components/UI.js';
 import { openModal, closeModal, renderMenu, renderShop, renderInventory, renderQuests, renderAchievements, renderStats, renderCodex, renderSettings } from '../components/Modals.js';
 import { getFishSprite } from '../utils/sprites.js';
+import { soundSystem } from './sound.js';
 
 export function initController() {
   // Fishing callbacks
@@ -24,6 +25,8 @@ export function initController() {
   fishingEngine.onComplete = (result) => {
     resetFishingUI();
     showCatchPopup(result);
+    soundSystem.splash();
+    soundSystem.catchFish(result.rarity);
 
     // Particles
     if (window.game.particles && gameState.get('settings.particles')) {
@@ -76,6 +79,7 @@ export function initController() {
   fishingEngine.onEscape = (result) => {
     resetFishingUI();
     showEscapePopup(result);
+    soundSystem.escape();
   };
 
   // === Expose game methods ===
@@ -83,6 +87,7 @@ export function initController() {
     if (!fishingEngine.canFish()) return;
     fishingEngine.startFishing();
 
+    soundSystem.cast();
     const rod = document.getElementById('rod');
     const line = document.getElementById('line');
     if (rod) rod.classList.add('cast');
@@ -302,7 +307,8 @@ export function initController() {
     window.game.updateQuests('earn_coins', value);
     window.game.checkAchievements('coins', gameState.get('player.coins'));
 
-    window.game.showToast('\u{1F4B0} +' + value + ' coins', 'success');
+window.game.showToast('\\u{1F4B0} +' + value + ' coins', 'success');
+    soundSystem.coin();
 
     if (window.game.particles && gameState.get('settings.particles')) {
       window.game.particles.coinBurst(200, 300);

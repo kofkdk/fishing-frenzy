@@ -8,6 +8,7 @@ import { QuestSystem, AchievementSystem } from './systems/quests.js';
 import { ParticleSystem } from './systems/particles.js';
 import { renderApp } from './components/App.js';
 import { initController } from './systems/controller.js';
+import { soundSystem } from './systems/sound.js';
 
 // Initialize systems
 const questSystem = new QuestSystem(gameState);
@@ -35,8 +36,9 @@ gameState.on('player.xp', () => {
     gameState.set('player.energy', gameState.get('player.maxEnergy'));
     gameState.update('player.gems', g => g + 5);
 
-    achievementSystem.check('level', level + 1);
-    showToast(`\u{1F389} Level ${level + 1}! +5 Gems`, 'success');
+achievementSystem.check('level', level + 1);
+    soundSystem.levelUp();
+    showToast(`\\u{1F389} Level ${level + 1}! +5 Gems`, 'success');
   }
 });
 
@@ -78,5 +80,8 @@ document.addEventListener('DOMContentLoaded', () => {
     window.game.particles.start();
   }
 
-  console.log('\u{1F3A3} Fishing Frenzy loaded!');
+// Init sound on first interaction
+  document.addEventListener('pointerdown', () => soundSystem.init(), { once: true });
+
+  console.log('\\u{1F3A3} Fishing Frenzy loaded!');
 });
