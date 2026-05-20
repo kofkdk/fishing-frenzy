@@ -191,6 +191,26 @@ body {
   to { transform: translateX(33.33%); }
 }
 
+/* Energy overlay - positioned in sky area */
+#energyOverlay {
+  position: absolute;
+  top: 6px;
+  left: 10px;
+  right: 10px;
+  z-index: 20;
+  pointer-events: auto;
+}
+
+.energy-overlay {
+  background: rgba(0, 0, 0, .45);
+  backdrop-filter: blur(4px);
+  border-radius: 10px;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 /* Boat - pixel art fisher scene */
 #fisherContainer {
   position: absolute;

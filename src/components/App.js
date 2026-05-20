@@ -1,6 +1,6 @@
 // App.js - Main application renderer
 import { renderScene } from './Scene.js';
-import { renderUI } from './UI.js';
+import { renderUI, renderEnergyOverlay } from './UI.js';
 import { renderHeader } from './Header.js';
 import { renderModals } from './Modals.js';
 
@@ -13,6 +13,7 @@ export function renderApp() {
         <div class="sky" id="sky"></div>
         <div class="moon"></div>
         <div class="stars" id="stars"></div>
+        <div id="energyOverlay"></div>
         <div class="water" id="water">
           <div class="wave"></div>
           <div id="fishBg"></div>
@@ -42,11 +43,13 @@ export function renderApp() {
   // Render sub-components
   renderHeader();
   renderScene();
+  renderEnergyOverlay();
   renderUI();
 
   // Listen for state changes
   window.game.state.on('*', () => {
     renderHeader();
+    renderEnergyOverlay();
     renderUI();
   });
 }

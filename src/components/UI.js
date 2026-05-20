@@ -3,6 +3,21 @@ import gameState from '../systems/state.js';
 import { fishingMinigame } from '../systems/fishing-minigame.js';
 import { DEPTH_CONFIG, RODS, BAITS } from '../data/fish.js';
 
+export function renderEnergyOverlay() {
+  const el = document.getElementById('energyOverlay');
+  if (!el) return;
+  const energy = gameState.get('player.energy');
+  const maxEnergy = gameState.get('player.maxEnergy');
+  el.innerHTML = `
+    <div class="energy-bar-wrap energy-overlay">
+      <span>\u26A1</span>
+      <div class="energy-bar"><div class="energy-fill" style="width:${(energy/maxEnergy*100)}%"></div></div>
+      <div class="energy-text">${energy}/${maxEnergy}</div>
+      <button class="energy-buy" onclick="window.game.buyEnergy()" ${gameState.get('player.coins') < 50 || energy >= maxEnergy ? 'disabled' : ''}>+20\u26A1 50\u{1F4B0}</button>
+    </div>
+  `;
+}
+
 export function renderUI() {
   const panel = document.getElementById('uiPanel');
   if (!panel) return;
@@ -33,7 +48,7 @@ export function renderUI() {
         <div class="depth-stat"><b>${legendChance.toFixed(1)}%</b><span>Legend</span></div>
       </div>
     </div>
-    <div class="energy-bar-wrap">
+    <div class="energy-bar-wrap" id="energyBarInline" style="display:none">
       <span>\u26A1</span>
       <div class="energy-bar"><div class="energy-fill" style="width:${(energy/maxEnergy*100)}%"></div></div>
       <div class="energy-text">${energy}/${maxEnergy}</div>
