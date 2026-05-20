@@ -201,17 +201,19 @@ body {
 
 .scene-fisher {
   position: absolute;
-  top: 15%;
+  top: 28%;
   left: 50%;
   transform: translateX(-50%);
   animation: bob 4s ease-in-out infinite;
 }
 
+/* Anchor boat bottom to water line regardless of phase */
 .scene-fisher img {
   width: 192px;
   height: auto;
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
+  vertical-align: bottom;
 }
 
 @keyframes bob {
