@@ -26,7 +26,7 @@ export function renderScene() {
         animation: ${goingLeft ? 'swim-left' : 'swim-right'} ${f.duration}s linear infinite;
         animation-delay: ${-i * 3}s;
         opacity: 0.7;
-      "><img src="${sprite}" alt="${f.id}" style="width:48px;height:30px;${goingLeft ? 'transform:scaleX(-1);' : ''}"></div>
+      "><img src="${sprite}" alt="${f.id}" style="width:48px;height:30px;${goingLeft ? '' : 'transform:scaleX(-1);'}"></div>
     `;
   });
   container.innerHTML = html;
