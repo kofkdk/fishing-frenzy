@@ -1,28 +1,53 @@
 // Controller.js - Game actions connecting UI to systems
 import gameState from '../systems/state.js';
-import { fishingEngine } from '../systems/fishing.js';
+import { fishingMinigame } from '../systems/fishing-minigame.js';
 import { breedingSystem } from '../systems/breeding.js';
 import { RODS, BAITS, SPECIES } from '../data/fish.js';
 import { renderHeader } from '../components/Header.js';
-import { renderUI } from '../components/UI.js';
+import { renderUI, updateTimingBar } from '../components/UI.js';
 import { openModal, closeModal, renderMenu, renderShop, renderInventory, renderQuests, renderAchievements, renderStats, renderCodex, renderSettings } from '../components/Modals.js';
 import { getFishSprite } from '../utils/sprites.js';
 import { soundSystem } from './sound.js';
 
 export function initController() {
-  // Fishing callbacks
-  fishingEngine.onProgress = (progress) => {
-    const btn = document.getElementById('castBtn');
-    if (btn) {
-      btn.innerHTML = `\u23F3 ${progress}%<div class="cast-progress" style="width:${progress}%"></div>`;
+  // Fishing minigame callbacks
+  fishingMinigame.onPhaseChange = (phase) => {
+    const rod = document.getElementById('rod');
+    const line = document.getElementById('line');
+    const bobber = document.getElementById('bobber');
+
+    // Reset classes
+    if (rod) rod.classList.remove('cast');
+    if (line) line.classList.remove('active');
+    if (bobber) bobber.classList.remove('bite');
+
+    switch (phase) {
+      case 'casting':
+        if (rod) rod.classList.add('cast');
+        soundSystem.cast();
+        break;
+      case 'waiting':
+        if (line) line.classList.add('active');
+        break;
+      case 'bite':
+        if (bobber) bobber.classList.add('bite');
+        if (gameState.get('settings.vibration') && navigator.vibrate) {
+          navigator.vibrate([100, 50, 100]);
+        }
+        break;
+      case 'idle':
+        // All classes already removed above
+        break;
     }
-    if (progress >= 80) {
-      const bobber = document.getElementById('bobber');
-      if (bobber) bobber.classList.add('bite');
-    }
+
+    renderUI();
   };
 
-  fishingEngine.onComplete = (result) => {
+  fishingMinigame.onBarUpdate = (position, zoneStart, zoneSize, roundsDone, roundsTotal) => {
+    updateTimingBar(position, zoneStart, zoneSize, roundsDone, roundsTotal);
+  };
+
+  fishingMinigame.onCatch = (result) => {
     resetFishingUI();
     showCatchPopup(result);
     soundSystem.splash();
@@ -59,7 +84,7 @@ export function initController() {
     }
     window.game.updateQuests('earn_coins', result.fish.value);
     window.game.updateQuests('use_bait', 1);
-    if (fishingEngine.currentDepth >= 3) {
+    if (fishingMinigame.depth >= 3) {
       window.game.updateQuests('depth_fish', 1);
     }
 
@@ -76,31 +101,19 @@ export function initController() {
     }
   };
 
-  fishingEngine.onEscape = (result) => {
+  fishingMinigame.onEscape = (result) => {
     resetFishingUI();
     showEscapePopup(result);
     soundSystem.escape();
   };
 
   // === Expose game methods ===
-  window.game.cast = () => {
-    if (!fishingEngine.canFish()) return;
-    fishingEngine.startFishing();
-
-    soundSystem.cast();
-    const rod = document.getElementById('rod');
-    const line = document.getElementById('line');
-    if (rod) rod.classList.add('cast');
-    setTimeout(() => {
-      if (line) line.classList.add('active');
-      if (rod) rod.classList.remove('cast');
-    }, 400);
-
-    renderUI();
-  };
+  window.game.cast = () => fishingMinigame.cast();
+  window.game.hookFish = () => fishingMinigame.hookFish();
+  window.game.reelTap = () => fishingMinigame.reelTap();
 
   window.game.setDepth = (depth) => {
-    fishingEngine.setDepth(depth);
+    fishingMinigame.setDepth(depth);
     renderUI();
   };
 
@@ -307,7 +320,7 @@ export function initController() {
     window.game.updateQuests('earn_coins', value);
     window.game.checkAchievements('coins', gameState.get('player.coins'));
 
-window.game.showToast('\\u{1F4B0} +' + value + ' coins', 'success');
+    window.game.showToast('\u{1F4B0} +' + value + ' coins', 'success');
     soundSystem.coin();
 
     if (window.game.particles && gameState.get('settings.particles')) {
@@ -385,8 +398,10 @@ window.game.showToast('\\u{1F4B0} +' + value + ' coins', 'success');
 function resetFishingUI() {
   const line = document.getElementById('line');
   const bobber = document.getElementById('bobber');
+  const rod = document.getElementById('rod');
   if (line) line.classList.remove('active');
   if (bobber) bobber.classList.remove('bite');
+  if (rod) rod.classList.remove('cast');
   renderUI();
 }
 

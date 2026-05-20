@@ -1,7 +1,7 @@
 // Main entry point - Fishing Frenzy
 import './styles/main.css';
 import gameState from './systems/state.js';
-import { fishingEngine } from './systems/fishing.js';
+import { fishingMinigame } from './systems/fishing-minigame.js';
 import { breedingSystem } from './systems/breeding.js';
 import { weatherSystem } from './systems/weather.js';
 import { QuestSystem, AchievementSystem } from './systems/quests.js';
@@ -45,7 +45,7 @@ achievementSystem.check('level', level + 1);
 // Export for global access
 window.game = {
   state: gameState,
-  fishing: fishingEngine,
+  fishing: fishingMinigame,
   breeding: breedingSystem,
   weather: weatherSystem,
   quests: questSystem,
