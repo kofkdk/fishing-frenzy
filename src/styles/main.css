@@ -191,25 +191,96 @@ body {
   to { transform: translateX(33.33%); }
 }
 
-/* Boat - now handled by Scene.js pixel art sprites */
+/* Boat - pixel art fisher scene */
 .scene-fisher {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
   animation: bob 4s ease-in-out infinite;
 }
 
 @keyframes bob {
   0%, 100% { transform: translateX(-50%) translateY(0) rotate(-1deg); }
-  50% { transform: translateX(-50%) translateY(-8px) rotate(1deg); }
+  50% { transform: translateX(-50%) translateY(-6px) rotate(1deg); }
 }
 
+/* Cast animation - fisher leans forward */
 .scene-fisher.casting img {
   animation: cast-motion 0.8s ease-out;
 }
 
 @keyframes cast-motion {
-  0% { transform: rotate(0deg); }
-  30% { transform: rotate(-8deg); }
-  60% { transform: rotate(3deg); }
-  100% { transform: rotate(0deg); }
+  0% { transform: rotate(0deg) translateY(0); }
+  20% { transform: rotate(-10deg) translateY(-4px); }
+  50% { transform: rotate(5deg) translateY(2px); }
+  100% { transform: rotate(0deg) translateY(0); }
+}
+
+/* Reel animation - fisher pulls back repeatedly */
+.scene-fisher.reeling img {
+  animation: reel-motion 0.5s ease-in-out infinite;
+}
+
+@keyframes reel-motion {
+  0%, 100% { transform: rotate(0deg) translateY(0); }
+  50% { transform: rotate(3deg) translateY(-3px); }
+}
+
+/* Bite alert - fisher shakes */
+.scene-fisher.bite-alert img {
+  animation: bite-shake 0.15s ease-in-out infinite;
+}
+
+@keyframes bite-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  75% { transform: translateX(3px); }
+}
+
+/* Bobber */
+.scene-bobber {
+  position: absolute;
+  top: 48%;
+  right: 28%;
+  z-index: 9;
+  animation: bobber-float 2s ease-in-out infinite;
+}
+
+@keyframes bobber-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.scene-bobber.bobber-bite {
+  animation: bobber-bite 0.15s ease-in-out infinite !important;
+}
+
+@keyframes bobber-bite {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(6px) rotate(-10deg); }
+  75% { transform: translateY(8px) rotate(10deg); }
+}
+
+.scene-bobber.bobber-reel {
+  animation: bobber-reel 0.3s ease-in-out infinite !important;
+}
+
+@keyframes bobber-reel {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Fishing line */
+.fishing-line {
+  position: absolute;
+  top: 35%;
+  right: 32%;
+  width: 2px;
+  height: 14%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.3));
+  z-index: 8;
 }
 
 /* Particle canvas overlay */

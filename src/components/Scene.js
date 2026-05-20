@@ -18,35 +18,34 @@ export function renderScene() {
   const fisherBoat = getFisherBoatSprite();
   const phase = fishingMinigame.phase;
   
-  // Bobber visibility based on phase
+  // Phase-based classes for animation
+  let fisherClass = 'scene-fisher';
+  if (phase === 'casting') fisherClass += ' casting';
+  if (phase === 'reeling') fisherClass += ' reeling';
+  if (phase === 'bite') fisherClass += ' bite-alert';
+
+  // Bobber visibility
   const showBobber = ['waiting', 'bite', 'reeling'].includes(phase);
-  const bobberClass = phase === 'bite' ? 'bobber-bite' : '';
+  const bobberClass = phase === 'bite' ? 'bobber-bite' : (phase === 'reeling' ? 'bobber-reel' : '');
   const bobber = getBobberSprite();
 
   let html = `
-    <div class="scene-fisher" style="
-      position: absolute;
-      bottom: 42%;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 10;
-    ">
+    <div class="${fisherClass}">
       <img src="${fisherBoat}" alt="Fisher" style="width:140px;height:80px;image-rendering:pixelated;">
     </div>
   `;
 
   if (showBobber) {
     html += `
-      <div class="scene-bobber ${bobberClass}" style="
-        position: absolute;
-        bottom: 28%;
-        right: 25%;
-        z-index: 9;
-        animation: bobber-float 1.5s ease-in-out infinite;
-      ">
+      <div class="scene-bobber ${bobberClass}">
         <img src="${bobber}" alt="Bobber" style="width:16px;height:16px;image-rendering:pixelated;">
       </div>
     `;
+  }
+
+  // Fishing line from rod tip to bobber
+  if (showBobber) {
+    html += `<div class="fishing-line"></div>`;
   }
 
   // Background fish
@@ -80,18 +79,6 @@ export function renderScene() {
       @keyframes swim-right {
         from { left: -60px; }
         to { left: calc(100% + 60px); }
-      }
-      @keyframes bobber-float {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-4px); }
-      }
-      .bobber-bite {
-        animation: bobber-bite 0.2s ease-in-out infinite !important;
-      }
-      @keyframes bobber-bite {
-        0%, 100% { transform: translateY(0) rotate(0deg); }
-        25% { transform: translateY(3px) rotate(-5deg); }
-        75% { transform: translateY(5px) rotate(5deg); }
       }
       .fish-bg { position: absolute; }
       .scene-fisher img { image-rendering: pixelated; image-rendering: -moz-crisp-edges; }
