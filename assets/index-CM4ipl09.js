@@ -317,19 +317,7 @@
           <div class="wave"></div>
           <div id="fishBg"></div>
         </div>
-        <div class="boat-wrap">
-          <div class="boat">
-            <div class="hull"></div>
-            <div class="fisher">🧑‍🌾</div>
-            <div class="rod-wrap">
-              <div class="rod" id="rod">
-                <div class="line" id="line">
-                  <div class="bobber" id="bobber"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+
         <canvas id="particles"></canvas>
       </div>
       <div class="ui-panel" id="uiPanel"></div>
