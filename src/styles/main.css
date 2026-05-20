@@ -191,113 +191,25 @@ body {
   to { transform: translateX(33.33%); }
 }
 
-/* Boat */
-.boat-wrap {
-  position: absolute;
-  top: 33%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
+/* Boat - now handled by Scene.js pixel art sprites */
+.scene-fisher {
   animation: bob 4s ease-in-out infinite;
 }
 
 @keyframes bob {
-  0%, 100% { transform: translateX(-50%) translateY(0) rotate(-1.5deg); }
-  50% { transform: translateX(-50%) translateY(-10px) rotate(1.5deg); }
+  0%, 100% { transform: translateX(-50%) translateY(0) rotate(-1deg); }
+  50% { transform: translateX(-50%) translateY(-8px) rotate(1deg); }
 }
 
-.boat {
-  position: relative;
-  width: 110px;
-  height: 55px;
+.scene-fisher.casting img {
+  animation: cast-motion 0.8s ease-out;
 }
 
-.hull {
-  position: absolute;
-  bottom: 0;
-  width: 110px;
-  height: 32px;
-  background: linear-gradient(180deg, #a1887f, #8d6e63 30%, #6d4c41 70%, #5d4037);
-  border-radius: 5px 5px 50% 50% / 5px 5px 100% 100%;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, .5);
-}
-
-.fisher {
-  position: absolute;
-  bottom: 28px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 42px;
-}
-
-.rod-wrap {
-  position: absolute;
-  bottom: 52px;
-  left: 68px;
-}
-
-.rod {
-  width: 75px;
-  height: 4px;
-  background: linear-gradient(90deg, #6d4c41, #5d4037, #4e342e);
-  border-radius: 2px;
-  transform: rotate(-30deg);
-  transform-origin: left center;
-  transition: transform .3s;
-}
-
-.rod.cast {
-  animation: cast .8s;
-}
-
-@keyframes cast {
-  0% { transform: rotate(-30deg); }
-  30% { transform: rotate(-70deg); }
-  100% { transform: rotate(-30deg); }
-}
-
-.line {
-  position: absolute;
-  top: -2px;
-  right: 2px;
-  width: 2px;
-  height: 0;
-  background: linear-gradient(180deg, rgba(255, 255, 255, .9), rgba(255, 255, 255, .3));
-  transition: height .6s;
-}
-
-.line.active {
-  height: 130px;
-}
-
-.bobber {
-  position: absolute;
-  bottom: -18px;
-  left: -7px;
-  width: 16px;
-  height: 22px;
-  background: linear-gradient(180deg, #f44336 50%, #fff 50%);
-  border-radius: 50%;
-  opacity: 0;
-  transition: opacity .4s;
-}
-
-.line.active .bobber {
-  opacity: 1;
-  animation: float 2s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(10px); }
-}
-
-.bobber.bite {
-  animation: bite .12s infinite !important;
-}
-
-@keyframes bite {
-  50% { transform: translateY(25px); }
+@keyframes cast-motion {
+  0% { transform: rotate(0deg); }
+  30% { transform: rotate(-8deg); }
+  60% { transform: rotate(3deg); }
+  100% { transform: rotate(0deg); }
 }
 
 /* Particle canvas overlay */

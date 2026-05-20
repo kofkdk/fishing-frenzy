@@ -17,19 +17,7 @@ export function renderApp() {
           <div class="wave"></div>
           <div id="fishBg"></div>
         </div>
-        <div class="boat-wrap">
-          <div class="boat">
-            <div class="hull"></div>
-            <div class="fisher">\u{1F9D1}\u200D\u{1F33E}</div>
-            <div class="rod-wrap">
-              <div class="rod" id="rod">
-                <div class="line" id="line">
-                  <div class="bobber" id="bobber"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+
         <canvas id="particles"></canvas>
       </div>
       <div class="ui-panel" id="uiPanel"></div>
