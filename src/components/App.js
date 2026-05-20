@@ -1,0 +1,77 @@
+// App.js - Main application renderer
+import { renderScene } from './Scene.js';
+import { renderUI } from './UI.js';
+import { renderHeader } from './Header.js';
+import { renderModals } from './Modals.js';
+
+export function renderApp() {
+  const app = document.getElementById('app');
+  app.innerHTML = `
+    <div class="app">
+      <div class="header" id="header"></div>
+      <div class="scene" id="scene">
+        <div class="sky" id="sky"></div>
+        <div class="moon"></div>
+        <div class="stars" id="stars"></div>
+        <div class="water" id="water">
+          <div class="wave"></div>
+          <div id="fishBg"></div>
+        </div>
+        <div class="boat-wrap">
+          <div class="boat">
+            <div class="hull"></div>
+            <div class="fisher">\u{1F9D1}\u200D\u{1F33E}</div>
+            <div class="rod-wrap">
+              <div class="rod" id="rod">
+                <div class="line" id="line">
+                  <div class="bobber" id="bobber"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <canvas id="particles"></canvas>
+      </div>
+      <div class="ui-panel" id="uiPanel"></div>
+      <div class="modal-bg" id="modalBg"></div>
+      <div class="catch-popup" id="catchPopup"></div>
+      <div class="toast" id="toast"></div>
+    </div>
+  `;
+
+  // Size particle canvas
+  const canvas = document.getElementById('particles');
+  const scene = document.getElementById('scene');
+  if (canvas && scene) {
+    canvas.width = scene.offsetWidth;
+    canvas.height = scene.offsetHeight;
+  }
+
+  // Generate stars
+  generateStars();
+
+  // Render sub-components
+  renderHeader();
+  renderScene();
+  renderUI();
+
+  // Listen for state changes
+  window.game.state.on('*', () => {
+    renderHeader();
+    renderUI();
+  });
+}
+
+function generateStars() {
+  const container = document.getElementById('stars');
+  if (!container) return;
+  let html = '';
+  for (let i = 0; i < 30; i++) {
+    const x = Math.random() * 100;
+    const y = Math.random() * 100;
+    const delay = Math.random() * 3;
+    const size = Math.random() * 2 + 1;
+    html += `<div class="star" style="left:${x}%;top:${y}%;width:${size}px;height:${size}px;animation-delay:${delay}s"></div>`;
+  }
+  container.innerHTML = html;
+}
