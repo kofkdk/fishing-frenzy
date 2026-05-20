@@ -1,17 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 20" width="64" height="40" shape-rendering="crispEdges">
-<ellipse cx="16" cy="10" rx="14" ry="9" fill="#4CAF50" opacity="0.15">
-<animate attributeName="opacity" values="0.1;0.25;0.1" dur="2s" repeatCount="indefinite"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 32" width="48" height="32">
+<ellipse cx="24" cy="16" rx="20" ry="12" fill="#4CAF50" opacity="0.12">
+<animate attributeName="opacity" values="0.08;0.2;0.08" dur="2s" repeatCount="indefinite"/>
 </ellipse>
-<path d="M2,10 Q2,4 7,3 L24,3 Q29,4 30,9 L31,10 L30,11 Q29,16 24,17 L7,17 Q2,16 2,10 Z" fill="#1B5E20"/>
-<path d="M4,12 L26,13 Q28,12 28,11 L4,11 Z" fill="#A5D6A7" opacity="0.4"/>
-<path d="M28,4 L32,1 L32,7 Z" fill="#0D3B0E"/>
-<path d="M28,16 L32,19 L32,13 Z" fill="#0D3B0E"/>
-<path d="M8,3 L10,0 L12,2 L14,0 L16,3 Z" fill="#0D3B0E"/>
-<line x1="3" y1="8" x2="1" y2="5" stroke="#4CAF50" stroke-width="1.5" stroke-linecap="round"/>
-<path d="M2,10 L4,9 L4,11 Z" fill="#0D3B0E"/>
-<rect x="3" y="10.5" width="1.2" height="0.8" fill="white"/>
-<rect x="5" y="10.5" width="1.2" height="0.8" fill="white"/>
-<rect x="7" y="10.5" width="1.2" height="0.8" fill="white"/>
-<circle cx="5" cy="7" r="2" fill="#FFEB3B"/>
-<circle cx="5.5" cy="7" r="1.2" fill="#1a1a2e"/>
+<path d="M4,16 Q4,7 12,5 L36,5 Q44,7 46,14 L47,16 L46,18 Q44,25 36,27 L12,27 Q4,25 4,16 Z" fill="#1B5E20"/>
+<path d="M6,18 L38,19 Q42,18 42,17 L6,17 Z" fill="#A5D6A7" opacity="0.35"/>
+<path d="M42,6 Q47,2 48,8 L44,9 Z" fill="#0D3B0E"/>
+<path d="M42,26 Q47,30 48,24 L44,23 Z" fill="#0D3B0E"/>
+<path d="M12,5 L15,1 L18,4 L21,0 L24,5 Z" fill="#0D3B0E"/>
+<line x1="5" y1="12" x2="2" y2="8" stroke="#4CAF50" stroke-width="2" stroke-linecap="round"/>
+<path d="M4,16 L7,15 L7,18 Z" fill="#0D3B0E"/>
+<rect x="5" y="17.5" width="2" height="1.2" fill="white" rx="0.3"/>
+<rect x="8.5" y="17.5" width="2" height="1.2" fill="white" rx="0.3"/>
+<rect x="12" y="17.5" width="2" height="1.2" fill="white" rx="0.3"/>
+<circle cx="8" cy="11" r="3" fill="#FFEB3B"/>
+<circle cx="8.7" cy="11" r="1.8" fill="#333"/>
 </svg>
