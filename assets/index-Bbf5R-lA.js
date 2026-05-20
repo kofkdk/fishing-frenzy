@@ -5,7 +5,7 @@
         animation: ${d?"swim-left":"swim-right"} ${t.duration}s linear infinite;
         animation-delay: ${-i*3}s;
         opacity: 0.7;
-      "><img src="${s}" alt="${t.id}" style="width:48px;height:30px;${d?"transform:scaleX(-1);":""}"></div>
+      "><img src="${s}" alt="${t.id}" style="width:48px;height:30px;${d?"":"transform:scaleX(-1);"}"></div>
     `}),o.innerHTML=r,!document.getElementById("swim-keyframes")){const t=document.createElement("style");t.id="swim-keyframes",t.textContent=`
       @keyframes swim-right {
         0% { left: -60px; }
