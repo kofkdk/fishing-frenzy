@@ -91,16 +91,24 @@ export function initController() {
     renderUI();
   };
 
-  window.game.buyEnergy = () => {
+  window.game.buyEnergy = (amount = 20, cost = 50) => {
     const coins = gameState.get('player.coins');
     const energy = gameState.get('player.energy');
     const maxEnergy = gameState.get('player.maxEnergy');
-    if (coins < 50 || energy >= maxEnergy) return;
-    gameState.update('player.coins', c => c - 50);
-    gameState.set('player.energy', Math.min(energy + 20, maxEnergy));
-    window.game.showToast('\u26A1 +20 Energy!', 'success');
+    if (coins < cost || energy >= maxEnergy) return;
+    gameState.update('player.coins', c => c - cost);
+    gameState.set('player.energy', Math.min(energy + amount, maxEnergy));
+    window.game.showToast(`\u26A1 +${amount} Energy!`, 'success');
+    // Close menu after purchase
+    const menu = document.getElementById('energyMenu');
+    if (menu) menu.classList.remove('show');
     renderHeader();
     renderUI();
+  };
+
+  window.game.toggleEnergyMenu = () => {
+    const menu = document.getElementById('energyMenu');
+    if (menu) menu.classList.toggle('show');
   };
 
   window.game.openMenu = () => renderMenu();

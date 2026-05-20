@@ -13,7 +13,19 @@ export function renderEnergyOverlay() {
       <span>\u26A1</span>
       <div class="energy-bar"><div class="energy-fill" style="width:${(energy/maxEnergy*100)}%"></div></div>
       <div class="energy-text">${energy}/${maxEnergy}</div>
-      <button class="energy-buy" onclick="window.game.buyEnergy()" ${gameState.get('player.coins') < 50 || energy >= maxEnergy ? 'disabled' : ''}>+20\u26A1 50\u{1F4B0}</button>
+      <button class="energy-plus-btn" onclick="window.game.toggleEnergyMenu()">+</button>
+    </div>
+    <div class="energy-menu" id="energyMenu">
+      <div class="energy-menu-title">\u26A1 Beli Energy</div>
+      <button class="energy-menu-item" onclick="window.game.buyEnergy(20, 50)" ${gameState.get('player.coins') < 50 || energy >= maxEnergy ? 'disabled' : ''}>
+        <span>+20 \u26A1</span><span class="energy-menu-price">50 \u{1F4B0}</span>
+      </button>
+      <button class="energy-menu-item" onclick="window.game.buyEnergy(50, 100)" ${gameState.get('player.coins') < 100 || energy >= maxEnergy ? 'disabled' : ''}>
+        <span>+50 \u26A1</span><span class="energy-menu-price">100 \u{1F4B0}</span>
+      </button>
+      <button class="energy-menu-item" onclick="window.game.buyEnergy(100, 180)" ${gameState.get('player.coins') < 180 || energy >= maxEnergy ? 'disabled' : ''}>
+        <span>+100 \u26A1</span><span class="energy-menu-price">180 \u{1F4B0}</span>
+      </button>
     </div>
   `;
 }
