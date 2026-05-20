@@ -33,8 +33,12 @@ import hybrid_abyssal from '../assets/sprites/hybrid_abyssal.png';
 import hybrid_celestial from '../assets/sprites/hybrid_celestial.png';
 import hybrid_oceanlord from '../assets/sprites/hybrid_oceanlord.png';
 
-// Boat
+// Boat & Character
 import boat from '../assets/sprites/boat.png';
+import fisher from '../assets/sprites/fisher.png';
+import fisher_boat from '../assets/sprites/fisher_boat.png';
+import bobber from '../assets/sprites/bobber.png';
+import rod from '../assets/sprites/rod.png';
 
 const SPRITES = {
   goldfish, carp, catfish, tilapia, guppy,
@@ -45,7 +49,7 @@ const SPRITES = {
   cosmic, ancient,
   hybrid_goldentrout, hybrid_seabass, hybrid_dragonshark,
   hybrid_rainbow, hybrid_abyssal, hybrid_celestial, hybrid_oceanlord,
-  boat
+  boat, fisher, fisher_boat, bobber, rod
 };
 
 export function getFishSprite(id) {
@@ -54,6 +58,22 @@ export function getFishSprite(id) {
 
 export function getBoatSprite() {
   return SPRITES.boat;
+}
+
+export function getFisherSprite() {
+  return SPRITES.fisher;
+}
+
+export function getFisherBoatSprite() {
+  return SPRITES.fisher_boat;
+}
+
+export function getBobberSprite() {
+  return SPRITES.bobber;
+}
+
+export function getRodSprite() {
+  return SPRITES.rod;
 }
 
 export default SPRITES;
