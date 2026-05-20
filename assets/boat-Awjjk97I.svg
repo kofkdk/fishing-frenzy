@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 44" width="128" height="88" style="image-rendering:pixelated">
+<!-- Water reflection -->
+<rect x="12" y="40" width="40" height="2" fill="#4fc3f7" opacity="0.2"/>
+<rect x="16" y="42" width="32" height="2" fill="#4fc3f7" opacity="0.1"/>
+
+<!-- Hull shadow -->
+<rect x="14" y="36" width="36" height="2" fill="#000" opacity="0.3"/>
+
+<!-- Hull -->
+<rect x="10" y="28" width="44" height="2" fill="#a1887f"/>
+<rect x="8" y="30" width="48" height="2" fill="#8d6e63"/>
+<rect x="10" y="32" width="44" height="2" fill="#6d4c41"/>
+<rect x="12" y="34" width="40" height="2" fill="#5d4037"/>
+<rect x="16" y="36" width="32" height="2" fill="#4e342e"/>
+
+<!-- Hull detail lines -->
+<rect x="12" y="30" width="40" height="1" fill="#4e342e" opacity="0.3"/>
+
+<!-- Deck -->
+<rect x="12" y="26" width="40" height="2" fill="#bcaaa4"/>
+<rect x="14" y="26" width="36" height="1" fill="#d7ccc8"/>
+
+<!-- Deck railing -->
+<rect x="12" y="24" width="1" height="2" fill="#795548"/>
+<rect x="20" y="24" width="1" height="2" fill="#795548"/>
+<rect x="28" y="24" width="1" height="2" fill="#795548"/>
+<rect x="36" y="24" width="1" height="2" fill="#795548"/>
+<rect x="44" y="24" width="1" height="2" fill="#795548"/>
+<rect x="52" y="24" width="1" height="2" fill="#795548"/>
+<rect x="12" y="24" width="41" height="1" fill="#795548"/>
+
+<!-- Cabin -->
+<rect x="22" y="16" width="16" height="8" fill="#5d4037"/>
+<rect x="22" y="16" width="16" height="2" fill="#795548"/>
+<rect x="24" y="18" width="4" height="4" fill="#4fc3f7" opacity="0.6"/>
+<rect x="30" y="18" width="4" height="4" fill="#4fc3f7" opacity="0.6"/>
+
+<!-- Mast -->
+<rect x="30" y="2" width="2" height="14" fill="#5d4037"/>
+
+<!-- Flag -->
+<rect x="32" y="2" width="8" height="5" fill="#f44336"/>
+<rect x="32" y="2" width="8" height="2" fill="#ff5252"/>
+<rect x="33" y="3" width="2" height="2" fill="#fff" opacity="0.5"/>
+
+<!-- Fisher character -->
+<rect x="42" y="14" width="6" height="10" fill="#1565C0"/>
+<rect x="43" y="10" width="4" height="4" fill="#ffcc80"/>
+<rect x="42" y="8" width="6" height="2" fill="#f44336"/>
+<rect x="43" y="10" width="1" height="1" fill="#1a1a2e"/>
+
+<!-- Fishing rod -->
+<line x1="48" y1="12" x2="62" y2="4" stroke="#4e342e" stroke-width="1.5"/>
+<circle cx="62" cy="4" r="0.5" fill="#fff"/>
+</svg>
