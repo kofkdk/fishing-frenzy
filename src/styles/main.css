@@ -201,7 +201,7 @@ body {
 
 .scene-fisher {
   position: absolute;
-  top: 28%;
+  top: 20%;
   left: 50%;
   transform: translateX(-50%);
   animation: bob 4s ease-in-out infinite;
