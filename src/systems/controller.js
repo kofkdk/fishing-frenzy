@@ -13,34 +13,7 @@ import { soundSystem } from './sound.js';
 export function initController() {
   // Fishing minigame callbacks
   fishingMinigame.onPhaseChange = (phase) => {
-    const rod = document.getElementById('rod');
-    const line = document.getElementById('line');
-    const bobber = document.getElementById('bobber');
-
-    // Reset classes
-    if (rod) rod.classList.remove('cast');
-    if (line) line.classList.remove('active');
-    if (bobber) bobber.classList.remove('bite');
-
-    switch (phase) {
-      case 'casting':
-        if (rod) rod.classList.add('cast');
-        soundSystem.cast();
-        break;
-      case 'waiting':
-        if (line) line.classList.add('active');
-        break;
-      case 'bite':
-        if (bobber) bobber.classList.add('bite');
-        if (gameState.get('settings.vibration') && navigator.vibrate) {
-          navigator.vibrate([100, 50, 100]);
-        }
-        break;
-      case 'idle':
-        // All classes already removed above
-        break;
-    }
-
+    renderScene(); // Update fisher animations + bobber visibility
     renderUI();
   };
 
