@@ -201,7 +201,7 @@ body {
 
 .scene-fisher {
   position: absolute;
-  top: 25%;
+  top: 20%;
   left: 50%;
   transform: translateX(-50%);
   animation: bob 4s ease-in-out infinite;
@@ -266,6 +266,12 @@ body {
   50% { transform: translateY(-5px); }
 }
 
+.scene-bobber img {
+  width: 12px;
+  height: 12px;
+  image-rendering: pixelated;
+}
+
 .scene-bobber.bobber-bite {
   animation: bobber-bite 0.15s ease-in-out infinite !important;
 }
@@ -285,15 +291,17 @@ body {
   50% { transform: translateY(-8px); }
 }
 
-/* Fishing line */
+/* Fishing line - thin curved line */
 .fishing-line {
   position: absolute;
-  top: 35%;
-  right: 32%;
-  width: 2px;
-  height: 14%;
-  background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.3));
+  top: 32%;
+  right: 30%;
+  width: 1px;
+  height: 18%;
+  background: rgba(255,255,255,0.5);
   z-index: 8;
+  transform: rotate(5deg);
+  transform-origin: top;
 }
 
 /* Particle canvas overlay */
