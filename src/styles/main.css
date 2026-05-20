@@ -194,11 +194,18 @@ body {
 /* Boat - pixel art fisher scene */
 .scene-fisher {
   position: absolute;
-  top: 18%;
+  top: 15%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
   animation: bob 4s ease-in-out infinite;
+}
+
+.scene-fisher img {
+  width: 140px;
+  height: 80px;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
 }
 
 @keyframes bob {

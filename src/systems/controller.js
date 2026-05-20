@@ -5,6 +5,7 @@ import { breedingSystem } from '../systems/breeding.js';
 import { RODS, BAITS, SPECIES } from '../data/fish.js';
 import { renderHeader } from '../components/Header.js';
 import { renderUI, updateTimingBar } from '../components/UI.js';
+import { renderScene } from '../components/Scene.js';
 import { openModal, closeModal, renderMenu, renderShop, renderInventory, renderQuests, renderAchievements, renderStats, renderCodex, renderSettings } from '../components/Modals.js';
 import { getFishSprite } from '../utils/sprites.js';
 import { soundSystem } from './sound.js';

@@ -31,7 +31,7 @@ export function renderScene() {
 
   let html = `
     <div class="${fisherClass}">
-      <img src="${fisherBoat}" alt="Fisher" style="width:140px;height:80px;image-rendering:pixelated;">
+      <img src="${fisherBoat}" alt="Fisher">
     </div>
   `;
 
