@@ -208,8 +208,8 @@ body {
 }
 
 .scene-fisher img {
-  width: 140px;
-  height: 80px;
+  width: 200px;
+  height: auto;
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
 }

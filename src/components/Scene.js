@@ -11,80 +11,92 @@ const BG_FISH = [
   { id: 'guppy', top: 80, duration: 12, dir: 'right' }
 ];
 
+let initialized = false;
+
 export function renderScene() {
   const fishBg = document.getElementById('fishBg');
   const fisherContainer = document.getElementById('fisherContainer');
-  if (!fishBg) return;
+  if (!fishBg || !fisherContainer) return;
 
-  const fisherBoat = getFisherBoatSprite();
   const phase = fishingMinigame.phase;
-  
-  // Phase-based classes for animation
-  let fisherClass = 'scene-fisher';
-  if (phase === 'casting') fisherClass += ' casting';
-  if (phase === 'reeling') fisherClass += ' reeling';
-  if (phase === 'bite') fisherClass += ' bite-alert';
 
-  // Bobber visibility
-  const showBobber = ['waiting', 'bite', 'reeling'].includes(phase);
-  const bobberClass = phase === 'bite' ? 'bobber-bite' : (phase === 'reeling' ? 'bobber-reel' : '');
-  const bobber = getBobberSprite();
+  // Only create fisher DOM once, then just update classes
+  if (!initialized) {
+    const fisherBoat = getFisherBoatSprite();
+    const bobber = getBobberSprite();
 
-  // Fisher + bobber + line → render to fisherContainer (outside water div)
-  if (fisherContainer) {
-    let fisherHtml = `
-      <div class="${fisherClass}">
+    fisherContainer.innerHTML = `
+      <div class="scene-fisher" id="sceneFisher">
         <img src="${fisherBoat}" alt="Fisher">
       </div>
+      <div class="scene-bobber" id="sceneBobber">
+        <img src="${bobber}" alt="Bobber">
+      </div>
+      <div class="fishing-line" id="fishingLine"></div>
     `;
 
-    if (showBobber) {
-      fisherHtml += `
-        <div class="scene-bobber ${bobberClass}">
-          <img src="${bobber}" alt="Bobber">
-        </div>
-        <div class="fishing-line"></div>
+    // Background fish - only render once
+    let fishHtml = '';
+    BG_FISH.forEach((f, i) => {
+      const sprite = getFishSprite(f.id);
+      const goingRight = f.dir === 'right';
+      const animName = goingRight ? 'swim-right' : 'swim-left';
+      const flipStyle = goingRight ? 'transform:scaleX(-1);' : '';
+      
+      fishHtml += `
+        <div class="fish-bg" style="
+          position: absolute;
+          top: ${f.top}%;
+          animation: ${animName} ${f.duration}s linear infinite;
+          animation-delay: ${-i * 3}s;
+          opacity: 0.6;
+        "><img src="${sprite}" alt="${f.id}" style="width:48px;height:24px;image-rendering:pixelated;${flipStyle}"></div>
       `;
+    });
+    fishBg.innerHTML = fishHtml;
+
+    // Add keyframes
+    if (!document.getElementById('swim-keyframes')) {
+      const style = document.createElement('style');
+      style.id = 'swim-keyframes';
+      style.textContent = `
+        @keyframes swim-left {
+          from { left: calc(100% + 60px); }
+          to { left: -60px; }
+        }
+        @keyframes swim-right {
+          from { left: -60px; }
+          to { left: calc(100% + 60px); }
+        }
+        .fish-bg { position: absolute; }
+      `;
+      document.head.appendChild(style);
     }
 
-    fisherContainer.innerHTML = fisherHtml;
+    initialized = true;
   }
 
-  // Background fish → render to fishBg (inside water div)
-  let fishHtml = '';
-  BG_FISH.forEach((f, i) => {
-    const sprite = getFishSprite(f.id);
-    const goingRight = f.dir === 'right';
-    const animName = goingRight ? 'swim-right' : 'swim-left';
-    const flipStyle = goingRight ? 'transform:scaleX(-1);' : '';
-    
-    fishHtml += `
-      <div class="fish-bg" style="
-        position: absolute;
-        top: ${f.top}%;
-        animation: ${animName} ${f.duration}s linear infinite;
-        animation-delay: ${-i * 3}s;
-        opacity: 0.6;
-      "><img src="${sprite}" alt="${f.id}" style="width:48px;height:24px;image-rendering:pixelated;${flipStyle}"></div>
-    `;
-  });
-  fishBg.innerHTML = fishHtml;
+  // Update fisher classes (without re-creating DOM = animations persist)
+  const fisher = document.getElementById('sceneFisher');
+  const bobberEl = document.getElementById('sceneBobber');
+  const lineEl = document.getElementById('fishingLine');
 
-  // Add keyframes if not already added
-  if (!document.getElementById('swim-keyframes')) {
-    const style = document.createElement('style');
-    style.id = 'swim-keyframes';
-    style.textContent = `
-      @keyframes swim-left {
-        from { left: calc(100% + 60px); }
-        to { left: -60px; }
-      }
-      @keyframes swim-right {
-        from { left: -60px; }
-        to { left: calc(100% + 60px); }
-      }
-      .fish-bg { position: absolute; }
-    `;
-    document.head.appendChild(style);
+  if (fisher) {
+    fisher.className = 'scene-fisher';
+    if (phase === 'casting') fisher.classList.add('casting');
+    if (phase === 'reeling') fisher.classList.add('reeling');
+    if (phase === 'bite') fisher.classList.add('bite-alert');
+  }
+
+  // Show/hide bobber and line
+  const showBobber = ['waiting', 'bite', 'reeling'].includes(phase);
+  if (bobberEl) {
+    bobberEl.style.display = showBobber ? 'block' : 'none';
+    bobberEl.className = 'scene-bobber';
+    if (phase === 'bite') bobberEl.classList.add('bobber-bite');
+    if (phase === 'reeling') bobberEl.classList.add('bobber-reel');
+  }
+  if (lineEl) {
+    lineEl.style.display = showBobber ? 'block' : 'none';
   }
 }
