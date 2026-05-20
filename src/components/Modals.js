@@ -1,6 +1,6 @@
 // Modals.js - Modal system (menu, shop, inventory, quests, achievements, breeding)
 import gameState from '../systems/state.js';
-import { RODS, BAITS } from '../data/fish.js';
+import { RODS, BAITS, SPECIES } from '../data/fish.js';
 import { ACHIEVEMENTS } from '../systems/quests.js';
 import { renderFishCard, renderFishImage } from './FishRenderer.js';
 import { getFishSprite } from '../utils/sprites.js';
@@ -240,7 +240,6 @@ export function renderStats() {
 export function renderCodex() {
   const inventory = gameState.get('inventory') || [];
   const discovered = [...new Set(inventory.map(f => f.id))];
-  const { SPECIES } = require('../data/fish.js');
   const allFish = Object.entries(SPECIES);
 
   const html = allFish.map(([id, fish]) => {
