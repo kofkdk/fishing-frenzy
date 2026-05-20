@@ -201,14 +201,14 @@ body {
 
 .scene-fisher {
   position: absolute;
-  top: 20%;
+  top: 15%;
   left: 50%;
   transform: translateX(-50%);
   animation: bob 4s ease-in-out infinite;
 }
 
 .scene-fisher img {
-  width: 200px;
+  width: 192px;
   height: auto;
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
@@ -219,38 +219,7 @@ body {
   50% { transform: translateX(-50%) translateY(-6px) rotate(1deg); }
 }
 
-/* Cast animation - fisher leans forward */
-.scene-fisher.casting img {
-  animation: cast-motion 0.8s ease-out;
-}
-
-@keyframes cast-motion {
-  0% { transform: rotate(0deg) translateY(0); }
-  20% { transform: rotate(-10deg) translateY(-4px); }
-  50% { transform: rotate(5deg) translateY(2px); }
-  100% { transform: rotate(0deg) translateY(0); }
-}
-
-/* Reel animation - fisher pulls back repeatedly */
-.scene-fisher.reeling img {
-  animation: reel-motion 0.5s ease-in-out infinite;
-}
-
-@keyframes reel-motion {
-  0%, 100% { transform: rotate(0deg) translateY(0); }
-  50% { transform: rotate(3deg) translateY(-3px); }
-}
-
-/* Bite alert - fisher shakes */
-.scene-fisher.bite-alert img {
-  animation: bite-shake 0.15s ease-in-out infinite;
-}
-
-@keyframes bite-shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-3px); }
-  75% { transform: translateX(3px); }
-}
+/* Cast animation - not needed, sprite swaps instead */
 
 /* Bobber */
 .scene-bobber {

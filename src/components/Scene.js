@@ -11,7 +11,7 @@ const BG_FISH = [
   { id: 'guppy', top: 80, duration: 12, dir: 'right' }
 ];
 
-let initialized = false;
+let fishRendered = false;
 
 export function renderScene() {
   const fishBg = document.getElementById('fishBg');
@@ -20,22 +20,31 @@ export function renderScene() {
 
   const phase = fishingMinigame.phase;
 
-  // Only create fisher DOM once, then just update classes
-  if (!initialized) {
-    const fisherBoat = getFisherBoatSprite();
-    const bobber = getBobberSprite();
+  // Get the correct sprite for current phase
+  const fisherSprite = getFisherBoatSprite(phase);
+  const bobber = getBobberSprite();
+  const showBobber = ['waiting', 'bite', 'reeling'].includes(phase);
+  const bobberClass = phase === 'bite' ? 'bobber-bite' : (phase === 'reeling' ? 'bobber-reel' : '');
 
-    fisherContainer.innerHTML = `
-      <div class="scene-fisher" id="sceneFisher">
-        <img src="${fisherBoat}" alt="Fisher">
-      </div>
-      <div class="scene-bobber" id="sceneBobber">
+  // Always update fisher (swap sprite per phase = animation!)
+  let fisherHtml = `
+    <div class="scene-fisher">
+      <img src="${fisherSprite}" alt="Fisher">
+    </div>
+  `;
+
+  if (showBobber) {
+    fisherHtml += `
+      <div class="scene-bobber ${bobberClass}">
         <img src="${bobber}" alt="Bobber">
       </div>
-      <div class="fishing-line" id="fishingLine"></div>
     `;
+  }
 
-    // Background fish - only render once
+  fisherContainer.innerHTML = fisherHtml;
+
+  // Background fish - only render once
+  if (!fishRendered) {
     let fishHtml = '';
     BG_FISH.forEach((f, i) => {
       const sprite = getFishSprite(f.id);
@@ -72,31 +81,6 @@ export function renderScene() {
       `;
       document.head.appendChild(style);
     }
-
-    initialized = true;
-  }
-
-  // Update fisher classes (without re-creating DOM = animations persist)
-  const fisher = document.getElementById('sceneFisher');
-  const bobberEl = document.getElementById('sceneBobber');
-  const lineEl = document.getElementById('fishingLine');
-
-  if (fisher) {
-    fisher.className = 'scene-fisher';
-    if (phase === 'casting') fisher.classList.add('casting');
-    if (phase === 'reeling') fisher.classList.add('reeling');
-    if (phase === 'bite') fisher.classList.add('bite-alert');
-  }
-
-  // Show/hide bobber and line
-  const showBobber = ['waiting', 'bite', 'reeling'].includes(phase);
-  if (bobberEl) {
-    bobberEl.style.display = showBobber ? 'block' : 'none';
-    bobberEl.className = 'scene-bobber';
-    if (phase === 'bite') bobberEl.classList.add('bobber-bite');
-    if (phase === 'reeling') bobberEl.classList.add('bobber-reel');
-  }
-  if (lineEl) {
-    lineEl.style.display = showBobber ? 'block' : 'none';
+    fishRendered = true;
   }
 }

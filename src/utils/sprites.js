@@ -37,6 +37,9 @@ import hybrid_oceanlord from '../assets/sprites/hybrid_oceanlord.png';
 import boat from '../assets/sprites/boat.png';
 import fisher from '../assets/sprites/fisher.png';
 import fisher_boat from '../assets/sprites/fisher_boat.png';
+import fisher_idle from '../assets/sprites/fisher_idle.png';
+import fisher_cast from '../assets/sprites/fisher_cast.png';
+import fisher_reel from '../assets/sprites/fisher_reel.png';
 import bobber from '../assets/sprites/bobber.png';
 import rod from '../assets/sprites/rod.png';
 
@@ -49,7 +52,7 @@ const SPRITES = {
   cosmic, ancient,
   hybrid_goldentrout, hybrid_seabass, hybrid_dragonshark,
   hybrid_rainbow, hybrid_abyssal, hybrid_celestial, hybrid_oceanlord,
-  boat, fisher, fisher_boat, bobber, rod
+  boat, fisher, fisher_boat, fisher_idle, fisher_cast, fisher_reel, bobber, rod
 };
 
 export function getFishSprite(id) {
@@ -64,8 +67,10 @@ export function getFisherSprite() {
   return SPRITES.fisher;
 }
 
-export function getFisherBoatSprite() {
-  return SPRITES.fisher_boat;
+export function getFisherBoatSprite(phase) {
+  if (phase === 'casting') return SPRITES.fisher_cast;
+  if (phase === 'reeling') return SPRITES.fisher_reel;
+  return SPRITES.fisher_idle;
 }
 
 export function getBobberSprite() {
