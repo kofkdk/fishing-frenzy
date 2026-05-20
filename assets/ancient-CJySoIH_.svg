@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 32" width="48" height="32">
+<ellipse cx="24" cy="16" rx="20" ry="12" fill="#FFD700" opacity="0.12">
+<animate attributeName="opacity" values="0.08;0.2;0.08" dur="2s" repeatCount="indefinite"/>
+</ellipse>
+<path d="M4,16 Q4,7 12,5 L36,5 Q44,7 46,14 L47,16 L46,18 Q44,25 36,27 L12,27 Q4,25 4,16 Z" fill="#3E2723"/>
+<path d="M6,18 L38,19 Q42,18 42,17 L6,17 Z" fill="#795548" opacity="0.35"/>
+<path d="M42,6 Q47,2 48,8 L44,9 Z" fill="#1B0000"/>
+<path d="M42,26 Q47,30 48,24 L44,23 Z" fill="#1B0000"/>
+<path d="M12,5 L14,1 L17,4 L20,0 L23,4 L26,1 L28,5 Z" fill="#FFD700"/>
+<rect x="12" y="9" width="26" height="1.5" fill="#8D6E63" opacity="0.4" rx="0.5"/>
+<rect x="12" y="14" width="26" height="1.5" fill="#8D6E63" opacity="0.3" rx="0.5"/>
+<rect x="12" y="19" width="26" height="1.5" fill="#8D6E63" opacity="0.25" rx="0.5"/>
+<line x1="5" y1="12" x2="2" y2="8" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+<path d="M4,16 L7,15 L7,18 Z" fill="#1B0000"/>
+<rect x="5" y="17.5" width="2.5" height="1.5" fill="white" rx="0.3"/>
+<rect x="9" y="17.5" width="2.5" height="1.5" fill="white" rx="0.3"/>
+<circle cx="8" cy="11" r="3" fill="#FFD700"/>
+<circle cx="8.7" cy="11" r="1.8" fill="#333"/>
+<circle cx="8" cy="10.3" r="0.7" fill="white" opacity="0.8"/>
+</svg>

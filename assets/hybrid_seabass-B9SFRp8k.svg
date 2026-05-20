@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 32" width="48" height="32">
+<ellipse cx="24" cy="16" rx="18" ry="10" fill="#2196F3" opacity="0.12">
+<animate attributeName="opacity" values="0.08;0.2;0.08" dur="2s" repeatCount="indefinite"/>
+</ellipse>
+<path d="M6,16 Q6,9 14,8 L34,8 Q42,9 44,16 Q42,23 34,24 L14,24 Q6,23 6,16 Z" fill="#1E88E5"/>
+<path d="M8,17 L36,18 Q40,17 40,16 L8,16 Z" fill="#BBDEFB" opacity="0.5"/>
+<path d="M40,8 Q46,4 47,10 L42,11 Z" fill="#0D47A1"/>
+<path d="M40,24 Q46,28 47,22 L42,21 Z" fill="#0D47A1"/>
+<path d="M18,8 Q22,3 26,8 Z" fill="#0D47A1"/>
+<line x1="10" y1="11" x2="36" y2="11" stroke="#0D47A1" stroke-width="0.8" opacity="0.3"/>
+<line x1="10" y1="14" x2="36" y2="14" stroke="#0D47A1" stroke-width="0.8" opacity="0.25"/>
+<circle cx="10" cy="14" r="2.8" fill="white"/>
+<circle cx="10.7" cy="14" r="1.7" fill="#00E5FF"/>
+</svg>

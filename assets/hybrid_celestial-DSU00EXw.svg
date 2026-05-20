@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 32" width="48" height="32">
+<ellipse cx="24" cy="16" rx="20" ry="12" fill="#FFD600" opacity="0.15">
+<animate attributeName="opacity" values="0.12;0.3;0.12" dur="1.5s" repeatCount="indefinite"/>
+</ellipse>
+<path d="M6,16 Q6,9 14,8 L32,8 Q40,9 42,16 Q40,23 32,24 L14,24 Q6,23 6,16 Z" fill="#FF8F00"/>
+<path d="M8,18 Q12,22 20,23 L32,23 Q38,22 40,18 Z" fill="#FFECB3" opacity="0.5"/>
+<path d="M38,8 Q44,4 45,10 L40,11 Z" fill="#E65100"/>
+<path d="M38,24 Q44,28 45,22 L40,21 Z" fill="#E65100"/>
+<path d="M12,8 L14,2 L17,5 L20,0 L23,5 L26,2 L28,8 Z" fill="#FFD600"/>
+<line x1="6" y1="13" x2="3" y2="9" stroke="#FFD600" stroke-width="2" stroke-linecap="round"/>
+<line x1="6" y1="12" x2="4" y2="7" stroke="#FFD600" stroke-width="1.5" stroke-linecap="round"/>
+<circle cx="10" cy="14" r="2.8" fill="white"/>
+<circle cx="10.7" cy="14" r="1.7" fill="#FFEB3B"/>
+<circle cx="10" cy="13.3" r="0.7" fill="white" opacity="0.8"/>
+<circle cx="24" cy="9" r="0.7" fill="white"><animate attributeName="opacity" values="0;1;0" dur="1.2s" repeatCount="indefinite"/></circle>
+<circle cx="34" cy="13" r="0.7" fill="white"><animate attributeName="opacity" values="0;1;0" dur="1.6s" repeatCount="indefinite" begin="0.3s"/></circle>
+<circle cx="18" cy="22" r="0.7" fill="white"><animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="0.7s"/></circle>
+</svg>
